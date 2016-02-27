@@ -244,7 +244,7 @@ static void vram_scan(int c, wgChar **v, const struct reader_driver *r)
 		for(i = 3; i < c; i++){
 			const uint8_t d = STRTOUL(v[i], NULL, 0x10);
 			r->cpu.memory_write(h, address, 1, &d);
-			PRINTF(wgT("$%04x = 0x%02x->0x%02x\n"), address, (int) d, r->control.vram_connection(h));
+			PRINTF(wgT("$%04x = 0x%02x->0x%02x\n"), (int) address, (int) d, r->control.vram_connection(h));
 		}
 	}
 	r->control.close(h);
@@ -304,11 +304,11 @@ static void usage(const wgChar *v)
 	}
 }
 
-#ifdef WIN32
-int main(int c, char **vv)
-#else
-int anago_cui(int c, wgChar **v)
-#endif
+//#ifdef WIN32
+int main(int c, char **v)
+//#else
+//int anago_cui(int c, char **v)
+//#endif
 {
 	mm_init();
 	if(c >= 2){

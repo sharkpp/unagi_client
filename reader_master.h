@@ -32,7 +32,7 @@ struct reader_driver{
 	const struct reader_memory_access cpu, ppu;
 };
 
-static inline void wait(long msec)
+static inline void wait_msec(long msec)
 {
 	if(msec == 0){
 		return;

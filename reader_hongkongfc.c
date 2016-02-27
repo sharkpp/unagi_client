@@ -201,16 +201,16 @@ static void hk_cpu_write_6502(long address, long length, const uint8_t *data)
 		}
 		c = bit_clear(c, BITNUM_CPU_RW);
 		data_port_latch(DATA_SELECT_CONTROL, c);
-		//wait(wait_msec);
+		//wait_msec(wait_msec);
 		//φ2 = H, data out
 		c = bit_set(c, BITNUM_CPU_M2);
 		c = bit_clear(c, BITNUM_WRITEDATA_OUTPUT);
 		data_port_latch(DATA_SELECT_CONTROL, c);
-		//wait(wait_msec);
+		//wait_msec(wait_msec);
 		//φ2 = L, H にするまで R/W, address, Data を有効状態にする
 		c = bit_clear(c, BITNUM_CPU_M2);
 		data_port_latch(DATA_SELECT_CONTROL, c);
-		//wait(wait_msec);
+		//wait_msec(wait_msec);
 		//φ2 = H, R/W = H, address disable, data out disable
 		if(address & ADDRESS_MASK_A15){
 			//address & ADDRESS_MASK_A15 で動いてた..?

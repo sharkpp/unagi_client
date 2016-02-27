@@ -1,0 +1,12 @@
+APP_CUI = anago
+APP_GUI = 
+LIBUSB = /usr/local/Cellar/libusb-compat/0.1.5
+SQUIRREL = ../../SQUIRREL2
+KAZZO = ../../unagi_kazzo/firmware
+WX_CONFIG = wx-config
+CPPFLAGS =
+CXXFLAGS = 
+ICON_GUI = 
+ICON_CUI = 
+
+include anago.mk

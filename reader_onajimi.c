@@ -307,16 +307,16 @@ static void cpu_write_6502(long address, long length, const uint8_t *data)
 		if(address & ADDRESS_MASK_A15){
 			control = bit_clear(control, BITNUM_CPU_RAMROM_SELECT);
 		}
-		//wait(wait_msec);
+		//wait_msec(wait_msec);
 		
 		//φ2 = H, data out
 		control = bit_set(control, BITNUM_CPU_M2);
 		bus_control(control);
-		//wait(wait_msec);
+		//wait_msec(wait_msec);
 		//φ2 = L, H にするまで R/W, address, Data を有効状態にする
 		control = bit_clear(control, BITNUM_CPU_M2);
 		bus_control(control);
-		//wait(wait_msec);
+		//wait_msec(wait_msec);
 		//φ2 = H, R/W = H, address disable, data out disable
 		bus_control(BUS_CONTROL_BUS_WRITE);
 		

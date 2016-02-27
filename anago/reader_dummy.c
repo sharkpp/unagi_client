@@ -44,7 +44,7 @@ static void dummy_read(const struct reader_handle *h, const struct gauge *g, lon
 	}
 	while(length > 0){
 		const int l = length < packet ? length : packet;
-		wait(10);
+		wait_msec(10);
 		memset(data, 2, l);
 		data += l;
 		length -= l;
@@ -66,12 +66,12 @@ static void dummy_cpu_write(const struct reader_handle *h, long address, long le
 			data++;
 		}
 	}
-	wait(4);
+	wait_msec(4);
 }
 
 static void dummy_write(const struct reader_handle *h, long address, long length, const uint8_t *data)
 {
-	wait(4);
+	wait_msec(4);
 }
 
 static void dummy_flash_config(const struct reader_handle *h, long c000x, long c2aaa, long c5555, long unit, bool retry)
@@ -81,14 +81,14 @@ static void dummy_flash_config(const struct reader_handle *h, long c000x, long c
 static void dummy_flash_erase(const struct reader_handle *h, long address, bool dowait)
 {
 	if(dowait == true){
-		wait(10);
+		wait_msec(10);
 	}
 }
 
 static long dummy_flash_program(const struct reader_handle *h, const struct gauge *g, long address, long length, const uint8_t *data, bool dowait, bool skip)
 {
 	if(dowait == true){
-		wait(20);
+		wait_msec(20);
 	}
 	g->value_add(g->bar, g->label, 0x200);
 	return 0x200;

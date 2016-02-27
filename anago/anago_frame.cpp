@@ -928,18 +928,18 @@ public:
 	}
 };
 
-#ifndef WIN32
-extern "C"{
-  int anago_cui(int c, wxChar **v);
-}
-int main(int c, wxChar **v)
-{
-	if(c < 3){
-		return wxEntry(c, v);
-	}
-	return anago_cui(c, v);
-}
-#endif
+//#ifndef WIN32
+//extern "C"{
+//  int anago_cui(int c, char **v);
+//}
+//int main(int c, char **v)
+//{
+//	if(c < 3){
+//		return wxEntry(c, v);
+//	}
+//	return anago_cui(c, v);
+//}
+//#endif
 
 class MyApp : public wxApp
 {

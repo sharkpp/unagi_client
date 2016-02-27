@@ -220,7 +220,7 @@ static inline void flash_execute(const struct reader_handle *h, enum request p, 
 	}
 	if(dowait == true){
 		do{
-			wait(10);
+			wait_msec(10);
 			device_read(h, s, index, 0, 1, &status);
 		}while(status != KAZZO_TASK_FLASH_IDLE);
 	}

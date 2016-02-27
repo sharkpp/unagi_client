@@ -92,7 +92,7 @@ static void draw(const struct cui_gauge *t)
 	}
 	*text++ = wgT('|');
 	*text = wgT('\0');
-	PRINTF(bar);
+	PRINTF(wgT("%s"), bar);
 //	fflush(stdout);
 }
 

@@ -236,11 +236,11 @@ static SQInteger erase_wait(HSQUIRRELVM v)
 		if(timer_wait < timer_ppu){
 			timer_wait = timer_ppu;
 		}
-		wait(timer_wait);
+		wait_msec(timer_wait);
 	}else{
 		uint8_t s[2];
 		do{
-			wait(2);
+			wait_msec(2);
 			d->control->flash_status(d->handle, s);
 		//本来の意図からではここの条件式は && ではなく || だが、先に erase が終わったデバイスが動かせるので残しておく
 		}while((s[0] != KAZZO_TASK_FLASH_IDLE) && (s[1] != KAZZO_TASK_FLASH_IDLE));
@@ -296,7 +296,7 @@ static SQInteger program_main(HSQUIRRELVM v)
 	
 	while((state_cpu != SQ_VMSTATE_IDLE) || (state_ppu != SQ_VMSTATE_IDLE)){
 		uint8_t s[2];
-		wait(sleepms);
+		wait_msec(sleepms);
 		d->control->flash_status(d->handle, s);
 		if(state_cpu != SQ_VMSTATE_IDLE && s[0] == KAZZO_TASK_FLASH_IDLE){
 			if(program_memoryarea(co_cpu, d->handle, &d->cpu, d->compare, &state_cpu, &d->log) == false){
